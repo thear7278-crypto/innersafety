@@ -1,10 +1,12 @@
 import "./style.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 /* ----------------------------------------------------------
-   The Inner Safety OS™ — interactions
+   The Inner Safety OS™ - interactions
    - Nav background on scroll
    - Year stamp in footer
-   - Scroll-reveal via IntersectionObserver
+   - Scroll-reveal via GSAP & ScrollTrigger
    ---------------------------------------------------------- */
 
 const nav = document.getElementById("nav");
@@ -23,22 +25,45 @@ onScroll();
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-const revealEls = document.querySelectorAll(".reveal");
+/* --- Premium GSAP Animations --- */
+gsap.registerPlugin(ScrollTrigger);
 
-if ("IntersectionObserver" in window && revealEls.length) {
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+const heroElements = document.querySelectorAll(".hero__inner .reveal");
+const scrollRevealElements = document.querySelectorAll(".reveal:not(.hero__inner .reveal)");
+
+// Initial hero load sequence
+if (heroElements.length) {
+  gsap.fromTo(
+    heroElements,
+    { y: 30, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      delay: 0.2,
+    }
   );
+}
 
-  revealEls.forEach((el) => revealObserver.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add("is-visible"));
+// Scroll-triggered reveals for the rest of the page
+if (scrollRevealElements.length) {
+  scrollRevealElements.forEach((el) => {
+    gsap.fromTo(
+      el,
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+      }
+    );
+  });
 }

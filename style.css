@@ -1,5 +1,5 @@
 /* ===========================================================
-   The Inner Safety OS™ — premium minimalist landing page
+   The Inner Safety OS™ - premium minimalist landing page
    Design language: Apple / Notion / Stripe / Linear
    =========================================================== */
 
@@ -17,7 +17,7 @@
   --green-200: #c6dcc2;
   --green-300: #9cc095;
   --green-400: #6ba363;
-  --green-500: #4a8f45;
+  --green-500: #49924a; /* Brand Green */
   --green-600: #3c7638;
   --green-700: #315e2e;
 
@@ -27,7 +27,7 @@
   --ink-700: #2a2a2a;
   --ink-600: #404040;
   --ink-500: #6b6b6b;
-  --ink-400: #9a9a9a;
+  --ink-400: #8c8c8c;
   --ink-300: #c4c4c4;
   --ink-200: #e6e6e6;
   --ink-100: #f2f2f2;
@@ -121,6 +121,26 @@ sup {
   font-weight: 500;
 }
 
+/* ---------- Text Utilities ---------- */
+.text-gradient {
+  background: linear-gradient(135deg, var(--green-600) 0%, var(--green-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-muted {
+  font-size: 1.1rem;
+  color: var(--ink-400);
+  margin: 0;
+  line-height: 1.5;
+}
+.text-bold {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink-900);
+  margin: 0;
+}
+
 /* ---------- Layout helpers ---------- */
 .container {
   width: 100%;
@@ -151,13 +171,6 @@ sup {
   display: block;
   color: var(--text-soft);
   font-weight: 500;
-}
-.section__lede {
-  margin-top: var(--space-4);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-  max-width: 56ch;
 }
 
 /* ---------- Buttons ---------- */
@@ -289,11 +302,6 @@ sup {
   color: var(--ink-900);
   max-width: 18ch;
 }
-.hero__title-soft {
-  display: block;
-  color: var(--text-soft);
-  font-weight: 500;
-}
 .hero__sub {
   margin-top: var(--space-5);
   font-size: 1.18rem;
@@ -323,81 +331,62 @@ sup {
   transform: translateX(-50%);
 }
 
-/* ---------- Checkmark list (shared) ---------- */
-.check-list {
-  margin-top: var(--space-3);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.6rem;
-}
-.check-list li {
-  position: relative;
-  padding-left: 1.7rem;
-  font-size: 1.05rem;
-  color: var(--ink-700);
-  line-height: 1.7;
-}
-.check-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 14px;
-  height: 14px;
-  border-radius: var(--r-full);
-  border: 1.5px solid var(--accent);
-  background: var(--accent-soft);
-}
-.check-list li::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 0.78em;
-  width: 5px;
-  height: 8px;
-  border-right: 1.5px solid var(--accent);
-  border-bottom: 1.5px solid var(--accent);
-  transform: rotate(45deg);
-}
-
 /* ---------- Recognition ---------- */
-.recognition .container {
-  max-width: var(--container-narrow);
+.section.recognition {
+  padding: 100px 24px;
+  display: flex;
+  justify-content: center;
 }
-.recognition__known {
-  font-size: 1.1rem;
-  color: var(--ink-800);
+.recognition .container {
+  max-width: 680px; 
+}
+.recognition__heading {
+  font-size: 2.2rem;
   font-weight: 500;
+  color: var(--ink-900);
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+.recognition__list {
+  margin: 0 0 64px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 24px;
+  column-gap: 24px;
+}
+.recognition__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: var(--ink-900);
+}
+.check-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 .recognition__yet {
-  margin-top: var(--space-5);
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--ink-900);
+  margin-bottom: 40px;
 }
-.recognition__pain {
-  margin-top: var(--space-4);
-  display: grid;
-  gap: var(--space-2);
-  max-width: 56ch;
+.recognition__pain-points {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
 }
-.recognition__pain p {
+.recognition__pain-points p {
   font-size: 1.1rem;
   line-height: 1.5;
-  color: var(--ink-800);
+  color: var(--ink-400);
 }
-.recognition__close {
-  margin-top: var(--space-6);
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-  max-width: 54ch;
-}
-.recognition__close span {
-  display: block;
-  margin-top: var(--space-2);
-  color: var(--ink-900);
-  font-weight: 500;
+.recognition__conclusion {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; 
 }
 
 /* ---------- Belief shift ---------- */
@@ -431,18 +420,6 @@ sup {
   max-width: 52ch;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* ---------- New Solution ---------- */
-.solution {
-  background: var(--white);
-}
-.solution__inner {
-  max-width: var(--container-narrow);
-  margin: 0 auto;
-}
-.solution__inner .section__title {
-  max-width: 24ch;
 }
 
 /* ---------- What's Inside ---------- */
@@ -788,15 +765,14 @@ sup {
   margin-top: var(--space-2);
 }
 
-/* ---------- Scroll reveal ---------- */
+/* ---------- Initial Animation State (GSAP handles the rest) ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
-  will-change: opacity, transform;
 }
-.reveal.is-visible {
+/* Fallback if JS fails */
+html.no-js .reveal {
   opacity: 1;
+  visibility: visible;
   transform: none;
 }
 
@@ -844,6 +820,9 @@ sup {
   .buy__card {
     padding: var(--space-5) var(--space-4);
   }
+  .recognition__list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- Reduced motion ---------- */
@@ -852,130 +831,12 @@ sup {
     scroll-behavior: auto;
   }
   .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
   }
   .btn,
   .nav__cta {
     transition: none;
-  }
-}
-
-
-/* --- Base Variables & Setup --- */
-:root {
-  --brand-green: #49924a;
-  --text-dark: #111827; 
-  --text-muted: #8c8c8c; /* Matches the soft gray in the image */
-  --bg-color: #fafafa;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-body {
-  background-color: var(--bg-color);
-  font-family: var(--font-sans);
-  margin: 0;
-}
-
-.section.recognition {
-  padding: 100px 24px;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  max-width: 680px; /* Constrains text nicely to match the image layout */
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* --- Typography & Elements --- */
-.recognition__heading {
-  font-size: 2.2rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  margin-bottom: 48px;
-  letter-spacing: -0.02em;
-}
-
-/* 2-Column Grid List */
-.recognition__list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 64px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 24px;
-  column-gap: 24px;
-}
-
-.recognition__list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.05rem;
-  color: var(--text-dark);
-}
-
-.check-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-/* Pain Points Section */
-.recognition__yet {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-bottom: 40px;
-}
-
-.recognition__pain-points {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  margin-bottom: 48px;
-}
-
-.recognition__pain-points p, 
-.text-muted {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Conclusion Statements */
-.recognition__conclusion {
-  display: flex;
-  flex-direction: column;
-  gap: 32px; /* Generous spacing between the two final lines */
-}
-
-.text-bold {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin: 0;
-}
-
-/* --- Smooth Reveal Animations --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-  .recognition__list {
-    grid-template-columns: 1fr; /* Stacks list into 1 column on mobile */
   }
 }
