@@ -840,3 +840,119 @@ html.no-js .reveal {
     transition: none;
   }
 }
+
+/* ---------- Transformation ---------- */
+.transformation {
+  background: var(--white);
+}
+.transformation__inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.transformation .eyebrow {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+/* Timeline Layout */
+.transformation__timeline {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: var(--space-6);
+}
+.transformation__timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 12px;
+  left: 5px;
+  width: 2px;
+  background: var(--border);
+  border-radius: var(--r-full);
+}
+
+/* Individual Steps */
+.transformation__step {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+.transformation__step:last-child {
+  margin-bottom: 0;
+}
+.transformation__node {
+  position: absolute;
+  left: -28px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--r-full);
+  background: var(--white);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--white);
+  z-index: 2;
+}
+
+/* Typography for pairs */
+.transformation__trigger {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink-900);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.transformation__response {
+  font-size: 1.15rem;
+  color: var(--text-soft);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Conclusion Block */
+.transformation__conclusion {
+  text-align: center;
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+.transformation__eventually {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+.transformation__close {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--ink-800);
+  max-width: 48ch;
+  margin: 0 auto var(--space-4);
+}
+.transformation__end {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 620px) {
+  .transformation__timeline {
+    padding-left: 24px;
+  }
+  .transformation__node {
+    left: -24px;
+    width: 10px;
+    height: 10px;
+    top: 6px;
+  }
+  .transformation__trigger {
+    font-size: 1.15rem;
+  }
+  .transformation__response {
+    font-size: 1.05rem;
+  }
+  .transformation__close {
+    font-size: 1.15rem;
+  }
+}
